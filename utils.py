@@ -167,7 +167,7 @@ def create_sampling_mask(xda, counts, boundary, seed=None, path=None):
     pool_size = int(scalar * sum(counts.values()))
 
     # Clip data array to AOI and create a mask
-    xda = xda.rio.clip(boundary.geometry, all_touched=True)
+    xda = xda.rio.clip(boundary.geometry)
     boundary_mask = np.where(np.isfinite(xda.values), True, False)
 
     # Create array of x and y for given array
